@@ -12,7 +12,8 @@ const dataUserLogin = reactive({
 
 const loginUser = async () => {
   try {
-    await axiosI.post("/user/login", dataUserLogin);
+    const res = await axiosI.post("/user/login", dataUserLogin);
+    console.log(res);
     router.push({ name: "home" });
   } catch (error) {
     console.log(error);

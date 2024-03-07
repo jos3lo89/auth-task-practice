@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, reactive, ref } from "vue";
 import axiosI from "../axios/instance.js";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
-const router = useRouter()
+const router = useRouter();
 
 const dataTask = reactive({
   titulo: "",
@@ -19,9 +19,12 @@ const openCreateTaskCard = () => {
 
 const createTask = async () => {
   try {
-    await axiosI.post("/task/create", dataTask);
+    const res = await axiosI.post("/task/create", dataTask);
+    console.log(res);
     openCreateTaskCard();
     getTasks();
+    dataTask.titulo = "";
+    dataTask.descripcion = "";
   } catch (error) {
     console.log(error);
   }
@@ -52,7 +55,10 @@ const logoutSesion = async () => {
 
 <template>
   <div class="text-center p-4">
-    <button @click="openCreateTaskCard()" class="bg-yellow-600 p-1 rounded-lg mx-2">
+    <button
+      @click="openCreateTaskCard()"
+      class="bg-yellow-600 p-1 rounded-lg mx-2"
+    >
       Crear tarea
     </button>
     <button @click="logoutSesion()" class="bg-red-600 p-1 rounded-lg mx-2">

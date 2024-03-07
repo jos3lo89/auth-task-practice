@@ -12,6 +12,9 @@ const registrarUser = async () => {
   try {
     const res = await axiosI.post("/user/register", dataUserRegister);
     console.log(res);
+    dataUserRegister.usuario = "";
+    dataUserRegister.correo = "";
+    dataUserRegister.clave = "";
   } catch (error) {
     console.log(error);
   }
