@@ -18,6 +18,7 @@ taskRouter.post(
   createTask
 );
 taskRouter.get("/task/found", authValidator, foundTask);
+taskRouter.get("/task/found/:id", authValidator, foundTask);
 taskRouter.delete("/task/delete/:id", authValidator, deleteTask);
 taskRouter.put(
   "/task/update/:id",

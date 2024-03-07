@@ -21,9 +21,12 @@ export const createTask = async (req, res) => {
 
 export const foundTask = async (req, res) => {
   try {
-    const rows = await taskModel.find({
-      user: req.user.id,
-    });
+    const { id } = req.params;
+
+    const rows =
+      id !== undefined
+        ? await taskModel.findById(id)
+        : await taskModel.find({ user: req.user.id });
 
     res.status(200).json(rows);
   } catch (error) {

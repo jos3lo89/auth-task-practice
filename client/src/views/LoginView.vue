@@ -14,6 +14,7 @@ const loginUser = async () => {
   try {
     const res = await axiosI.post("/user/login", dataUserLogin);
     console.log(res);
+
     router.push({ name: "home" });
   } catch (error) {
     console.log(error);

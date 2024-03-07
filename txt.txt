@@ -1,0 +1,2 @@
+- mejorar las notificaciones
+- pedir datos de usuario en inicio
